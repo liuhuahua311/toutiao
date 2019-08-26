@@ -70,20 +70,29 @@ export default {
   },
   methods: {
     login () {
-      this.$refs.loginForm.validate((valid) => {
-        if (valid) {
-          this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
-            .then(res => {
-              // 登录成功时保存用户信息
-              // res是响应对象， res.data响应工作  res.data.data就是数据
-              // 用户信息 res.data.data
-              // 封装一个 store 文件，共同调用
-              store.setUser(res.data.data)
-              this.$router.push('/')
-            })
-            .catch(() => {
-              this.$message.error('手机号或验证码错误')
-            })
+      this.$refs.loginForm.validate(async (valid) => {
+        // if (valid) {
+        //   this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
+        //     .then(res => {
+        //       // 登录成功时保存用户信息
+        //       // res是响应对象， res.data响应工作  res.data.data就是数据
+        //       // 用户信息 res.data.data
+        //       // 封装一个 store 文件，共同调用
+        //       store.setUser(res.data.data)
+        //       this.$router.push('/')
+        //     })
+        //     .catch(() => {
+        //       this.$message.error('手机号或验证码错误')
+        //     })
+        // }//这是用promise做的，现在用ansync做
+
+        // 登录成功后，获取用户信息数据
+        try {
+          const { data: { data } } = await this.$http.post('authorizations', this.loginForm)
+          store.setUser(data)
+          this.$router.push('/')
+        } catch (e) {
+          this.$message.error('手机号或验证码错误')
         }
       })
     }
