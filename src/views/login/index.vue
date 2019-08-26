@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import store from '@/store'
 export default {
   // 这个生命周期就是等页面加载完毕了，然后使用ref就能拿到整个div dom元素
   mounted () {
@@ -73,6 +74,11 @@ export default {
         if (valid) {
           this.$http.post('http://ttapi.research.itcast.cn/mp/v1_0/authorizations', this.loginForm)
             .then(res => {
+              // 登录成功时保存用户信息
+              // res是响应对象， res.data响应工作  res.data.data就是数据
+              // 用户信息 res.data.data
+              // 封装一个 store 文件，共同调用
+              store.setUser(res.data.data)
               this.$router.push('/')
             })
             .catch(() => {

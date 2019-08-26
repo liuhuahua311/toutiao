@@ -6,6 +6,12 @@
 
 <script>
 export default {
+  created () {
+    // 测试调用接口是否好使
+    this.$http.get('articles')
+      .then(res => console.log(res.data))
+      .catch((err) => console.log(err))
+  }
 }
 </script>
 
