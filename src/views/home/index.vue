@@ -2,9 +2,17 @@
   <el-container class="my-container">
     <el-aside :width="ifCollapse?'64px':'200px'">
       <div class="logo" :class="{minlogo:ifCollapse}"></div>
+      <!-- 因为default-active是写死的，所以无法改变 -->
+      <!-- 应该处于什么页面，就激活什么菜单，怎么获取动态获取了 -->
+      <!-- :default-active:'当前路径' -->
+      <!-- $route 调用数据的 this.$route.query|params-->
+      <!-- query 获取地址栏 ？后面的key=value的传参  this.$route.query.key -->
+      <!-- params 获取地址栏 user/:id==user/100 的传参 获取100 this.$route.params.id-->
+      <!-- path  获取当前路径  $route.path  记得得在前面加逗号，因为是动态绑定 -->
 
+      <!-- $router 调用函数的  this.$router.push()    -->
       <el-menu
-        default-active="/"
+        :default-active="$route.path"
         class="el-menu-vertical-demo"
         background-color="#002033"
         text-color="#fff"
