@@ -3,11 +3,8 @@
     <!-- 卡片 -->
     <el-card>
       <div slot="header">
-        <!-- 面包屑 -->
-        <el-breadcrumb separator-class="el-icon-arrow-right">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-          <el-breadcrumb-item>粉丝管理</el-breadcrumb-item>
-        </el-breadcrumb>
+        <!-- 使用封装的面包屑组件 -->
+        <my-bread>内容管理</my-bread>
       </div>
 
       <!-- 表单 -->

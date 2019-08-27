@@ -8,6 +8,8 @@ import NotFount from '@/views/404'
 import store from '../store'
 import Article from '@/views/article'
 
+import Test from '@/views/test'
+
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -15,6 +17,7 @@ const router = new VueRouter({
     // name选项作用：当路径太长时，用name值可以跳转
     // 跳转方便一些，之前是用$router.push('/login') 现在可以用 $router.push({name:'login})
     { path: '/login', name: ' login', component: Login },
+    { path: '/test', name: 'test', component: Test },
     { path: '/',
       component: Home,
       children: [
