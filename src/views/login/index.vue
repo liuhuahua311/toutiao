@@ -85,7 +85,6 @@ export default {
         //       this.$message.error('手机号或验证码错误')
         //     })
         // }//这是用promise做的，现在用ansync做
-
         // 登录成功后，获取用户信息数据
         try {
           const { data: { data } } = await this.$http.post('authorizations', this.loginForm)

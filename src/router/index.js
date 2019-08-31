@@ -8,7 +8,7 @@ import NotFount from '@/views/404'
 import store from '../store'
 import Article from '@/views/article'
 
-import Test from '@/views/test'
+import Test from '@/views/test/com-fa'
 
 Vue.use(VueRouter)
 

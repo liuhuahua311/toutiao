@@ -1,6 +1,17 @@
 import axios from 'axios'
 import store from '@/store'
 import router from '@/router'// 用router来跳转页面
+import JSONBIG from 'json-bigint'// 导入json-bigint包
+
+// 进行json-bigint配置
+// 自定义转换响应格式
+axios.defaults.transformResponse = [(data) => {
+  try {
+    return JSONBIG.parse(data)
+  } catch (e) {
+    return data
+  }
+}]
 
 // 配置
 // 1，基准配置
